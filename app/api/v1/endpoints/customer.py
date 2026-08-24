@@ -5,7 +5,7 @@ from app.infrastructure.database.session import get_db
 from app.api.v1.schemas.customer import CustomerCreate,CustomerResponse
 from app.application.services.customer_service import create_customer, get_customer
 
-router = APIRouter(prefix="/cutomer", tags=["Customer"])
+router = APIRouter(prefix="/customer", tags=["Customer"])
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_new_customer(payload:CustomerCreate, db:AsyncSession = Depends(get_db)) -> CustomerResponse:

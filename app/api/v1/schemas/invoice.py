@@ -4,6 +4,7 @@ from app.infrastructure.database.models import Item
 from app.domain.enums import InvoiceStatus
 
 class InvoiceCreate(BaseModel):
+    model_config = ConfigDict(from_attributes=True, arbitrary_types_allowed=True)
     id:str
     customer_id:int
     status: InvoiceStatus
@@ -11,7 +12,7 @@ class InvoiceCreate(BaseModel):
     items:list[Item]
 
 class InvoiceResponse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, arbitrary_types_allowed=True)
     
     id:str
     customer_id:int
@@ -25,6 +26,9 @@ class InvoiceResponse(BaseModel):
     status: str
 
 class InvoiceSubmitResponse(BaseModel):
+
+    model_config = ConfigDict(from_attributes=True, arbitrary_types_allowed=True)
+
     id:str
     status: InvoiceStatus
     grand_total: float
